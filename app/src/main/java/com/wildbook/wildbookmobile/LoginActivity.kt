@@ -30,11 +30,14 @@ import android.widget.TextView
 import java.util.ArrayList
 
 import android.Manifest.permission.READ_CONTACTS
+import android.content.Context
+import android.content.Intent
 
 /**
  * A login screen that offers login via email/password.
  */
 class LoginActivity : AppCompatActivity(), LoaderCallbacks<Cursor> {
+
     /**
      * Keep track of the login task to ensure we can cancel it if requested.
      */
@@ -50,10 +53,11 @@ class LoginActivity : AppCompatActivity(), LoaderCallbacks<Cursor> {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
         // Set up the login form.
-        mEmailView = findViewById(R.id.email) as AutoCompleteTextView
+        //mEmailView = findViewById(R.id.email) as AutoCompleteTextView
+        mEmailView = findViewById<AutoCompleteTextView>(R.id.email)
         populateAutoComplete()
 
-        mPasswordView = findViewById(R.id.password) as EditText
+        mPasswordView = findViewById<EditText>(R.id.password)//findViewById(R.id.password) as EditText
         mPasswordView!!.setOnEditorActionListener(TextView.OnEditorActionListener { textView, id, keyEvent ->
             if (id == R.id.login || id == EditorInfo.IME_NULL) {
                 attemptLogin()
@@ -62,7 +66,7 @@ class LoginActivity : AppCompatActivity(), LoaderCallbacks<Cursor> {
             false
         })
 
-        val mEmailSignInButton = findViewById(R.id.email_sign_in_button) as Button
+        val mEmailSignInButton = findViewById<Button>(R.id.email_sign_in_button)
         mEmailSignInButton.setOnClickListener { attemptLogin() }
 
         mLoginFormView = findViewById(R.id.login_form)
@@ -285,7 +289,8 @@ class LoginActivity : AppCompatActivity(), LoaderCallbacks<Cursor> {
             showProgress(false)
 
             if (success!!) {
-                finish()
+                intent = Intent(applicationContext, MainActivity::class.java)
+                startActivity(intent)
             } else {
                 mPasswordView!!.error = getString(R.string.error_incorrect_password)
                 mPasswordView!!.requestFocus()
