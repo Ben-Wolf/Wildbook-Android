@@ -59,7 +59,7 @@ class LoginActivity : AppCompatActivity(), LoaderCallbacks<Cursor> {
 
         mPasswordView = findViewById<EditText>(R.id.password)//findViewById(R.id.password) as EditText
         mPasswordView!!.setOnEditorActionListener(TextView.OnEditorActionListener { textView, id, keyEvent ->
-            if (id == R.id.login || id == EditorInfo.IME_NULL) {
+            if (id == R.id.email || id == EditorInfo.IME_NULL) {
                 attemptLogin()
                 return@OnEditorActionListener true
             }
@@ -314,7 +314,7 @@ class LoginActivity : AppCompatActivity(), LoaderCallbacks<Cursor> {
          * A dummy authentication store containing known user names and passwords.
          * TODO: remove after connecting to a real authentication system.
          */
-        private val DUMMY_CREDENTIALS = arrayOf("foo@example.com:hello", "bar@example.com:world")
+        private val DUMMY_CREDENTIALS = arrayOf("foo@example.com:helloworld", "bar@example.com:helloworld")
     }
 }
 
