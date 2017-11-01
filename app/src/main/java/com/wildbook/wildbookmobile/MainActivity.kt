@@ -16,4 +16,16 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    /*
+        Detects valid file endings for images. Currently checks for .jpeg and .png
+    */
+    private fun isImage(fileName : String) : Boolean {
+        val splitFilename  = fileName.split(".".toRegex())
+        val fileEnding = splitFilename[1]
+        if (fileEnding == "jpeg" || fileEnding == "png") {
+            return true
+        }
+        return false
+    }
+
 }
