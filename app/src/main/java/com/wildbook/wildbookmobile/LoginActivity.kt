@@ -59,7 +59,7 @@ class LoginActivity : AppCompatActivity(), LoaderCallbacks<Cursor> {
 
         mPasswordView = findViewById<EditText>(R.id.password)//findViewById(R.id.password) as EditText
         mPasswordView!!.setOnEditorActionListener(TextView.OnEditorActionListener { textView, id, keyEvent ->
-            if (id == R.id.login || id == EditorInfo.IME_NULL) {
+            if (id == R.id.email || id == EditorInfo.IME_NULL) {
                 attemptLogin()
                 return@OnEditorActionListener true
             }
@@ -260,7 +260,7 @@ class LoginActivity : AppCompatActivity(), LoaderCallbacks<Cursor> {
      * Represents an asynchronous login/registration task used to authenticate
      * the user.
      */
-    inner class UserLoginTask internal constructor(private val mEmail: String, private val mPassword: String) : AsyncTask<Void, Void, Boolean>() {
+    inner  class UserLoginTask internal constructor(private val mEmail: String, private val mPassword: String) : AsyncTask<Void, Void, Boolean>() {
 
         override fun doInBackground(vararg params: Void): Boolean? {
             // TODO: attempt authentication against a network service.
